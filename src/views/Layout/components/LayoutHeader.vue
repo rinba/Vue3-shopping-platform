@@ -1,19 +1,6 @@
 <script setup>
-import { getCategoryAPI } from '@/apis/layout';
-import { ref,onMounted } from 'vue';
-
-const categoryList = ref([])
-const getCategory = async ()=>{
-  const res = await getCategoryAPI()
-  console.log(res) //测试接口，接口炸了
-  categoryList.value = res.result
-}
-
-//使用生命周期钩子的目的是在合适的时候调用getCategory函数发送接口
-onMounted(()=>{
-  getCategory()
-})
-
+import { useCategoryStore } from '@/stores/category'
+const categoryStore = useCategoryStore()
 </script>
 
 <template>
@@ -23,7 +10,7 @@ onMounted(()=>{
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav">
-        <li class="home" v-for="item in categoryList" :key="item.id">
+        <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
       </ul>
