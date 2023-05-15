@@ -1,7 +1,6 @@
 {
     "compilerOptions" : {
       "baseUrl" : "./",
-      "types": ["element-plus/global"],
       "paths" : {
         "@/*":["src/*"]
       }
