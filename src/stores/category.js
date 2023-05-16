@@ -1,12 +1,12 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { getCategoryAPI } from '@/apis/layout'
+//一般暴露出去的都是以use开头的方法
 export const useCategoryStore = defineStore('category', () => {
-  // 导航列表的数据管理（使用pinia实现）
-  // state 导航列表数据
+  //Pinia中的state部分————导航列表数据
   const categoryList = ref([])
 
-  // action 获取导航数据的方法
+  //Pinia中的action部分————获取导航数据的方法
   const getCategory = async () => {
     const res = await getCategoryAPI()
     categoryList.value = res.result
