@@ -5,13 +5,14 @@ import { defineStore } from 'pinia'
 import { getCategoryAPI } from '@/apis/layout'
 //一般暴露出去的都是以use开头的方法
 export const useCategoryStore = defineStore('category', () => {
-  //Pinia中的 state部分
+  //store 中的 state对象
   const categoryList = ref([])
 
-  //Pinia中的 action部分
+  //store 中的 action对象
   const getCategory = async () => {
-    //执行接口函数，得到接口中的数据，并做响应式处理
+    //异步运行接口函数，得到接口中的数据
     const res = await getCategoryAPI()
+    //做响应式处理
     categoryList.value = res.result
   }
 
