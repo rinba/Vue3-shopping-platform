@@ -21,7 +21,7 @@ const router = createRouter({
           component:Home
         },
         {
-          path:'category',   //写子路由时路径前面没有/ 
+          path:'category/:id',   //写子路由时路径前面没有/ 
           component:Category
 
         }
