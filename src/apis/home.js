@@ -1,24 +1,31 @@
-//封装3个接口函数
+//封装4个接口函数
 
 import httpInstance from '@/utils/http'
 
-//获取banner
 export function getBannerAPI(){
     return httpInstance({
+        //banner（右侧轮播图）的接口
         url:'/home/banner'
     })
 }
 
-//获取新鲜好物
 export const findNewAPI = () => {
     return httpInstance({
-      url:'/home/new'
+        //新鲜好物的接口
+        url:'/home/new'
     })
 }
 
-//获取人气推荐
 export const findHotAPI = ()=>{
     return httpInstance({
+        //人气推荐的接口
         url:'/home/hot'
+    })
+}
+
+export const getGoodsAPI = ()=>{
+    return httpInstance({
+        //人气推荐的接口
+        url:'/home/goods'
     })
 }
