@@ -4,6 +4,7 @@ import { onMounted,ref } from 'vue'
 import { useRoute } from 'vue-router' //在组件中获取路由参数
 //组件级路由守卫。在当前路由改变，但是该组件被复用时调用
 import { onBeforeRouteUpdate} from 'vue-router' 
+import { getBannerAPI } from '@/apis/home';
 
 //根据路由参数的id得到响应式接口数据
 const categoryData = ref({}) //注意这里定义的是一个对象，因为接口中的result是一个object
@@ -19,6 +20,20 @@ onBeforeRouteUpdate((to)=>{
     //当路由参数的id变化时，得到最新的响应式接口数据
     getCategory(to.params.id)
 })
+
+//获取banner
+const bannerList = ref([])
+const getBanner = async ()=>{
+  const res = await getBannerAPI({
+    distributionSite:2 //将请求参数distributionSite改为2
+  })
+  //测试是否得到接口中的数据
+  //console.log(res) 
+  bannerList.value = res.result
+}
+onMounted(() => {
+  getBanner()
+})
 </script>
 
 <template>
@@ -30,6 +45,16 @@ onBeforeRouteUpdate((to)=>{
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
         </el-breadcrumb>
+      </div>
+      <!--banner轮播图-->
+      <div class="home-banner">
+        <el-carousel height="500px">
+          <el-carousel-item v-for="item in bannerList" :key="item.id">
+            <img 
+            :src="item.imgUrl"
+            alt="">
+          </el-carousel-item>
+        </el-carousel>
       </div>
     </div>
   </div>
@@ -111,6 +136,17 @@ onBeforeRouteUpdate((to)=>{
 
   .bread-container {
     padding: 25px 0;
+  }
+}
+
+.home-banner {
+  width: 1240px;
+  height: 500px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: 500px;
   }
 }
 </style>
