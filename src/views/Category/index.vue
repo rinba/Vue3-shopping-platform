@@ -2,20 +2,21 @@
 import { getCategoryAPI } from '@/apis/category';
 import { onMounted,ref } from 'vue'
 import { useRoute } from 'vue-router' //在组件中获取路由参数
-import { onBeforeRouteUpdate} from 'vue-router' //当路由参数变化时，重新发送数据接口
+//组件级路由守卫。在当前路由改变，但是该组件被复用时调用
+import { onBeforeRouteUpdate} from 'vue-router' 
 
 //根据路由参数的id得到响应式接口数据
 const categoryData = ref({}) //注意这里定义的是一个对象，因为接口中的result是一个object
 const route = useRoute()
 const getCategory = async (id = route.params.id)=>{
-    const res = await getCategoryAPI(id) //此处是封装接口函数的params的id
+    const res = await getCategoryAPI(id) //此处是封装接口函数时params中的id
     categoryData.value = res.result
 }
 onMounted(()=>{
     getCategory()
 })
 onBeforeRouteUpdate((to)=>{
-    //使用最新的路由参数id请求最新的数据
+    //当路由参数的id变化时，得到最新的响应式接口数据
     getCategory(to.params.id)
 })
 </script>
