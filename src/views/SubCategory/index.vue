@@ -29,8 +29,6 @@ const getGoodList = async ()=>{
 onMounted(()=>{
     getGoodList()
 })
-
-
 </script>
 
 <template>

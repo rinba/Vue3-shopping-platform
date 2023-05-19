@@ -35,10 +35,10 @@ export const getCategoryFilterAPI = (id) => {
    } 
  * @return {*}
  */
-   export const getSubCategoryAPI = (data) => {
+export const getSubCategoryAPI = (data) => {
     return request({
-      url:'/category/goods/temporary',
-      method:'POST',
-      data
+        url:'/category/goods/temporary',
+        method:'POST',
+        data
     })
-  }
+}
