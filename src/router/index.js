@@ -37,6 +37,7 @@ const router = createRouter({
       component:Login
     }
   ],
+  //路由滚动优化，自动滚动到页面顶部
   scrollBehavior(){
     return {top:0}
   }
