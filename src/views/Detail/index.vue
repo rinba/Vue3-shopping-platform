@@ -2,6 +2,7 @@
 import { onMounted,ref } from 'vue'
 import { getDetail } from '@/apis/detail'
 import { useRoute } from 'vue-router' //获取路由参数
+import DetailHot from './components/DetailHot.vue'
 
 //获取基础数据
 const goods = ref({}) //接口中result是一个对象
@@ -13,6 +14,8 @@ const getGoods = async ()=>{
 onMounted(()=>{
     getGoods()
 })
+
+
 </script>
 
 <template>
@@ -25,7 +28,7 @@ onMounted(()=>{
             <!--
                 这里有一个小坑：goods一开始是一个空{}，{}.categories -> undefined -> undefined[1]
                 解决办法：1.可选链的语法，在goods.categories后面加 ?.
-                        2.v-if手动控制渲染时机，保证只有数据存在才渲染。这里使用goods中的任意数据result
+                        2.v-if手动控制渲染时机，保证只有数据存在才渲染。这里使用goods中的任意数据details
             -->
             <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{ goods.categories[1].name }}
             </el-breadcrumb-item>
@@ -123,7 +126,10 @@ onMounted(()=>{
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-
+              <!--24小时-->
+              <DetailHot :hot-type="1"/>
+              <!--周-->
+              <DetailHot :hot-type="2"/>
             </div>
           </div>
         </div>
