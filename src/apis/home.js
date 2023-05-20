@@ -30,7 +30,7 @@ export const findHotAPI = ()=>{
 
 export const getGoodsAPI = ()=>{
     return httpInstance({
-        //人气推荐的接口
+        //产品列表的接口
         url:'/home/goods'
     })
 }
