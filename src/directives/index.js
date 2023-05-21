@@ -1,4 +1,4 @@
-//定义懒加载插件
+//通过插件的方式，注册全局指令
 
 import { useIntersectionObserver } from '@vueuse/core'
 
