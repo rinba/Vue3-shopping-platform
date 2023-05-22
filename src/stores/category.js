@@ -1,14 +1,14 @@
-//使用Pinia实现统一状态管理
+//使用Pinia实现统一状态管理（接口无Body参数）
 
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { getCategoryAPI } from '@/apis/layout'
 //一般暴露出去的都是以use开头的方法
 export const useCategoryStore = defineStore('category', () => {
-  //store 中的 state对象
+  //1.定义管理用户数据的state
   const categoryList = ref([])
 
-  //store 中的 action对象
+  //2.定义获取接口数据的action函数
   const getCategory = async () => {
     //异步运行接口函数，得到接口中的数据
     const res = await getCategoryAPI()
@@ -16,7 +16,7 @@ export const useCategoryStore = defineStore('category', () => {
     categoryList.value = res.result
   }
 
-  //注意最后要使用 return
+  //3.以对象的格式把state和action  return
   return {
     categoryList,
     getCategory

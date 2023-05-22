@@ -1,13 +1,15 @@
 <script setup>
 import { ref } from 'vue'
-import { loginAPI } from '@/apis/user'
 //elementPlus的提示框
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 //用来调用router身上的方法
 import { useRouter } from 'vue-router' 
+//Pinia
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
 
-//表单校验（账号名+密码）
+//表单校验
 //1.准备表单对象
 const form = ref({
   account:'',
@@ -48,8 +50,7 @@ const doLogin = ()=>{
     //console.log(valid)
     //此处以valid作为判断条件
     if(valid){
-      const res = await loginAPI({account,password})
-      //console.log(res)
+      await userStore.getUserInfo({account,password})
       //1.提示用户
       ElMessage({type:'success', message:'登录成功'})
       //2.跳转首页
