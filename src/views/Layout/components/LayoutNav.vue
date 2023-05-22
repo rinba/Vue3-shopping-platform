@@ -1,5 +1,7 @@
 <script setup>
-
+//Pinia
+import { useUserStore } from '@/stores/user';
+const userStore = useUserStore()
 </script>
 
 <template>
@@ -8,7 +10,8 @@
         <div class="container">
         <ul>
             <!--使用v-if、v-else多模板渲染，区分登录状态和非登录状态-->
-            <template v-if="false">
+            <!--适配思路：登录时（有token）显示第一块模板，非登录时显示第二块模板-->
+            <template v-if="userStore.userInfo.token">
             <li><a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a></li>
             <li>
                 <el-popconfirm title="确认退出吗?" confirm-button-text="确认" cancel-button-text="取消">
