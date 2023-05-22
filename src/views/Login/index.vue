@@ -1,5 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { loginAPI } from '@/apis/user'
+//elementPlus的提示框
+import { ElMessage } from 'element-plus'
+import 'element-plus/theme-chalk/el-message.css'
+//用来调用router身上的方法
+import { useRouter } from 'vue-router' 
+
 //表单校验（账号名+密码）
 //1.准备表单对象
 const form = ref({
@@ -18,9 +25,9 @@ const rules = {
   ],
   agree:[
     {
+      //自定义校验逻辑。勾选就通过，不勾选就不通过。使用validator方法
       validator:(rule,value,callback)=>{
         //console.log(value) 验证是否勾选
-        //自定义校验逻辑。勾选就通过，不勾选就不通过
         if(value){
           callback()
         }else{
@@ -30,15 +37,23 @@ const rules = {
     }
   ]
 }
-//3.获取form实例做统一验证
+//3.获取form实例做统一验证，使用validate方法
 const formRef = ref(null)
+const router = useRouter()
 const doLogin = ()=>{
+  const {account,password} = form.value
   //调用实例方法，获取表单实例
-  formRef.value.validate((valid)=>{
+  formRef.value.validate(async (valid)=>{
     //valid:所有表单都通过校验，才为true
     //console.log(valid)
+    //此处以valid作为判断条件
     if(valid){
-      //TODO LOGIN
+      const res = await loginAPI({account,password})
+      //console.log(res)
+      //1.提示用户
+      ElMessage({type:'success', message:'登录成功'})
+      //2.跳转首页
+      router.replace({path:'/'})
     }
   })
 }
