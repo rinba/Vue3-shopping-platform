@@ -34,7 +34,7 @@ const cartStore = useCartStore()
           <!--加上JS的toFixed(2)方法使商品保留两位小数-->
           <p>&yen; {{ cartStore.allPrice.toFixed(2) }} </p>
         </div>
-        <el-button size="large" type="primary" >去购物车结算</el-button>
+        <el-button size="large" type="primary" @click="$router.push('/cartlist')">去购物车结算</el-button>
       </div>
     </div>
 </div>
