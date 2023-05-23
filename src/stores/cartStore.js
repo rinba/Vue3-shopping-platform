@@ -1,7 +1,7 @@
 //使用Pinia封装购物车模块
 
 import { defineStore } from "pinia"
-import { ref } from "vue"
+import { computed,ref } from "vue"
 
 export const useCartStore = defineStore('cart',()=>{
     //1.定义state
@@ -30,9 +30,18 @@ export const useCartStore = defineStore('cart',()=>{
         const idx = cartList.value.findIndex((item)=> skuId === item.skuId)
         cartList.value.splice(idx,1)
     }
-    
+
+    //计算属性（总的商品数量、总价格）
+    //总的商品数量=所有项的count之和，使用数组的reduce方法累加实现。
+    //a是上次调用函数的返回值，c是当前元素，0是迭代的初始值
+    const allCount = computed(()=>cartList.value.reduce((a,c)=> a + c.count,0))
+    //总价格=所有项的count*price之和
+    const allPrice = computed(()=>cartList.value.reduce((a,c)=> a + c.count * c.price,0))
+
     return{
         cartList,
+        allCount,
+        allPrice,
         addCart,
         delCart
     }
