@@ -8,6 +8,13 @@ const singleCheck = (i,selected)=>{
     cartStore.singleCheck(i.skuId,selected)  //传参
 }
 
+//全选功能
+//此时不需要指定某一个选中对象，而是操作全部对象，所以不用skuId
+const allCheck = (selected)=>{
+  allCheck(selected)  //传参
+}
+
+
 </script>
 
 <template>
@@ -18,7 +25,7 @@ const singleCheck = (i,selected)=>{
           <thead>
             <tr>
               <th width="120">
-                <el-checkbox/>
+                <el-checkbox :model-value="cartStore.isAll" @change="allCheck"/>
               </th>
               <th width="400">商品信息</th>
               <th width="220">单价</th>

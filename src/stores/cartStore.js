@@ -37,22 +37,32 @@ export const useCartStore = defineStore('cart',()=>{
         const item = cartList.value.find((item)=>item.skuId === skuId)
         item.selected = selected
     }
+    //2.4.全选功能
+    const allCheck = (selected) =>{ //接收参数
+        //把cartList中的每一项的selected都设置为当前的全选框状态。使用数组的 forEach()
+        cartList.value.forEach(item => item.selected = selected)
+    }
 
-    //计算属性（总的商品数量、总价格）
-    //总的商品数量=所有项的count之和，使用数组的reduce方法累加实现。
+    //计算属性
+    //总的商品数量 = 所有项的count之和，使用数组的reduce方法累加实现。
     //a是上次调用函数的返回值，c是当前元素，0是迭代的初始值
     const allCount = computed(()=>cartList.value.reduce((a,c)=> a + c.count,0))
-    //总价格=所有项的count*price之和
+    //总价格 = 所有项的count*price之和
     const allPrice = computed(()=>cartList.value.reduce((a,c)=> a + c.count * c.price,0))
+
+    //是否全选   所有项的selected都为true，它才为true。使用数组的 every()
+    const isAll = computed(()=>cartList.value.every((item)=>item.selected))
 
 
     return{
         cartList,
         allCount,
         allPrice,
+        isAll,
         addCart,
         delCart,
-        singleCheck
+        singleCheck,
+        allCheck
     }
 },{
     persist:true
