@@ -44,14 +44,20 @@ export const useCartStore = defineStore('cart',()=>{
     }
 
     //计算属性
-    //总的商品数量 = 所有项的count之和，使用数组的reduce方法累加实现。
+    //头部购物车
+    //总的商品数量   所有项的count之和，使用数组的reduce()累加实现。
     //a是上次调用函数的返回值，c是当前元素，0是迭代的初始值
     const allCount = computed(()=>cartList.value.reduce((a,c)=> a + c.count,0))
-    //总价格 = 所有项的count*price之和
+    //总价格   所有项的count*price之和
     const allPrice = computed(()=>cartList.value.reduce((a,c)=> a + c.count * c.price,0))
 
+    //列表购物车
     //是否全选   所有项的selected都为true，它才为true。使用数组的 every()
-    const isAll = computed(()=>cartList.value.every((item)=>item.selected))
+    const isAll = computed(()=>cartList.value.every(item => item.selected))
+    //已选择的商品数量   先过滤filter()，再累加reduce()，链式调用
+    const selectedCount = computed(()=>cartList.value.filter(item => item.selected).reduce((a,c)=> a + c.count,0))
+    //已选择的商品总价格   
+    const selectedPrice = computed(()=>cartList.value.filter(item => item.selected).reduce((a,c)=> a + c.count * c.price,0))
 
 
     return{
@@ -59,6 +65,8 @@ export const useCartStore = defineStore('cart',()=>{
         allCount,
         allPrice,
         isAll,
+        selectedCount,
+        selectedPrice,
         addCart,
         delCart,
         singleCheck,
