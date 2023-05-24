@@ -11,7 +11,15 @@ export const useCartStore = defineStore('cart',()=>{
     const isLogin = computed(()=> userStore.userInfo.token)
 
     //1.定义state
-    const cartList = ref([])    
+    const cartList = ref([])
+    
+    //获取最新购物车列表action （简单封装一个方法）
+    const updateNewList = async ()=>{
+        const res =await findNewCartListAPI()
+        //用接口购物车列表覆盖本地购物车列表
+        cartList.value = res.result
+    }
+    
     //2.定义action
     //2.1.添加购物车
     const addCart =async (goods)=>{
@@ -19,9 +27,7 @@ export const useCartStore = defineStore('cart',()=>{
         if(isLogin.value){  //已经登录
             //--- 接口购物车 ---
             await insertCartAPI({skuId,count})
-            const res =await findNewCartListAPI()
-            //用接口购物车列表覆盖本地购物车列表
-            cartList.value = res.result
+            updateNewList()
         }else{
             //--- 本地购物车 ---
             //之前添加过，count+1；没有添加过，直接push添加
@@ -43,9 +49,7 @@ export const useCartStore = defineStore('cart',()=>{
         if(isLogin.value){
             //--- 接口购物车 ---
             await delCartAPI([skuId])
-            const res =await findNewCartListAPI()
-            //用接口购物车列表覆盖本地购物车列表
-            cartList.value = res.result
+            updateNewList()
         }else{
             //--- 本地购物车 ---
             //实现数组的定点删除有两种办法：splice、filter
@@ -100,7 +104,8 @@ export const useCartStore = defineStore('cart',()=>{
         delCart,
         singleCheck,
         allCheck,
-        clearCart
+        clearCart,
+        updateNewList
     }
 },{
     persist:true
