@@ -67,6 +67,11 @@ export const useCartStore = defineStore('cart',()=>{
         cartList.value.forEach(item => item.selected = selected)
     }
 
+    //2.5清除购物车
+    const clearCart = ()=>{
+        cartList.value = []  //赋值空数组等效于清除
+    }
+
     //计算属性
     //本地购物车->头部购物车
     //总的商品数量   所有项的count之和，使用数组的reduce()累加实现。
@@ -94,7 +99,8 @@ export const useCartStore = defineStore('cart',()=>{
         addCart,
         delCart,
         singleCheck,
-        allCheck
+        allCheck,
+        clearCart
     }
 },{
     persist:true
