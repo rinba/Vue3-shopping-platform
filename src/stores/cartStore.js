@@ -2,26 +2,41 @@
 
 import { defineStore } from "pinia"
 import { computed,ref } from "vue"
+import { useUserStore } from "./user"
+import { insertCartAPI,findNewCartListAPI } from "@/apis/cart"
 
 export const useCartStore = defineStore('cart',()=>{
+    const userStore = useUserStore()
+    //判断是否登录，依据接口的数据中有没有token。 这里没必要写computed
+    const isLogin = computed(()=> userStore.userInfo.token)
+
     //1.定义state
     const cartList = ref([])    
     //2.定义action
     //2.1.添加购物车
-    //此处的goods是从Detail->index.vue中传过来的参数，和接口中goods不一样
-    const addCart = (goods)=>{
-        //已添加过，count+1；没有添加过，直接push
-        //通过匹配传递过来的商品对象中的skuId能不能在cartlist中找到，找到了就是添加过
-        const item = cartList.value.find((item)=>goods.skuId === item.skuId)
-        if(item){
-            //找到了
-            item.count++
+    const addCart =async (goods)=>{
+        const { skuId,count } = goods
+        if(isLogin.value){  //已经登录
+            //--- 接口购物车 ---
+            await insertCartAPI({skuId,count})
+            const res =await findNewCartListAPI()
+            //用接口购物车列表覆盖本地购物车列表
+            cartList.value = res.result
         }else{
-            //没找到
-            cartList.value.push(goods)
-        }
-    
-    }   
+            //--- 本地购物车 ---
+            //之前添加过，count+1；没有添加过，直接push添加
+            //通过匹配传递过来的商品对象中的skuId能不能在cartlist中找到，找到了就是添加过
+            //此处的goods是从Detail->index.vue中传过来的参数，和接口中goods不一样
+            const item = cartList.value.find((item)=>goods.skuId === item.skuId)
+            if(item){
+                //找到了
+                item.count++
+            }else{
+                //没找到
+                cartList.value.push(goods)
+            }
+        } 
+    }    
 
     //2.2.删除购物车（依靠skuId）
     const delCart = (skuId)=>{
@@ -44,14 +59,14 @@ export const useCartStore = defineStore('cart',()=>{
     }
 
     //计算属性
-    //头部购物车
+    //本地购物车->头部购物车
     //总的商品数量   所有项的count之和，使用数组的reduce()累加实现。
     //a是上次调用函数的返回值，c是当前元素，0是迭代的初始值
     const allCount = computed(()=>cartList.value.reduce((a,c)=> a + c.count,0))
     //总价格   所有项的count*price之和
     const allPrice = computed(()=>cartList.value.reduce((a,c)=> a + c.count * c.price,0))
 
-    //列表购物车
+    //本地购物车->列表购物车
     //是否全选   所有项的selected都为true，它才为true。使用数组的 every()
     const isAll = computed(()=>cartList.value.every(item => item.selected))
     //已选择的商品数量   先过滤filter()，再累加reduce()，链式调用
