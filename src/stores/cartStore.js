@@ -3,7 +3,7 @@
 import { defineStore } from "pinia"
 import { computed,ref } from "vue"
 import { useUserStore } from "./user"
-import { insertCartAPI,findNewCartListAPI } from "@/apis/cart"
+import { insertCartAPI,findNewCartListAPI,delCartAPI } from "@/apis/cart"
 
 export const useCartStore = defineStore('cart',()=>{
     const userStore = useUserStore()
@@ -39,11 +39,20 @@ export const useCartStore = defineStore('cart',()=>{
     }    
 
     //2.2.删除购物车（依靠skuId）
-    const delCart = (skuId)=>{
-        //实现数组的定点删除有两种办法：splice、filter
-        //找到要删除项的下标值，使用splice（替换，会改变原数组）
-        const idx = cartList.value.findIndex((item)=> skuId === item.skuId)
-        cartList.value.splice(idx,1)
+    const delCart = async (skuId)=>{
+        if(isLogin.value){
+            //--- 接口购物车 ---
+            await delCartAPI([skuId])
+            const res =await findNewCartListAPI()
+            //用接口购物车列表覆盖本地购物车列表
+            cartList.value = res.result
+        }else{
+            //--- 本地购物车 ---
+            //实现数组的定点删除有两种办法：splice、filter
+            //找到要删除项的下标值，使用splice（替换，会改变原数组）
+            const idx = cartList.value.findIndex((item)=> skuId === item.skuId)
+            cartList.value.splice(idx,1)
+        }
     }
 
     //2.3.单选功能

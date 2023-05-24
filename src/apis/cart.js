@@ -15,6 +15,17 @@ export const insertCartAPI = (({skuId,count})=>{
     })
 })
 
+//删除购物车
+export const delCartAPI = ((ids)=>{ //接口中规定ids是skuID组成的数组
+    return httpInstance({
+        url:'/member/cart',
+        method:'DELETE',
+        data:{
+            ids
+        }
+    })
+})
+
 //获取最新的购物车列表
 export const findNewCartListAPI = ()=>{
     return httpInstance({
