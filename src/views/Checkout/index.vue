@@ -20,6 +20,23 @@ onMounted(() => {
 //控制切换地址的弹框打开
 const showDialog = ref(false)
 
+//记录当前弹框中被点击的那一项
+const activeAddress = ref({})
+const switchAddress = (item)=>{  //接收参数
+    activeAddress.value = item
+}
+
+//弹框中的确认按钮
+const confirm = ()=>{
+    curAddress.value = activeAddress.value //被激活项替换默认项
+    showDialog.value = false //确认后关闭弹框
+    activeAddress = {} //再次点击切换地址，被激活的是上一次选择的那一项
+}
+//弹框中的取消按钮
+const cancle = ()=>{
+    showDialog.value = false
+}
+
 </script>
 
 <template>
@@ -122,7 +139,8 @@ const showDialog = ref(false)
   <!-- 切换地址 -->
   <el-dialog v-model="showDialog" title="切换收货地址" width="30%" center>
   <div class="addressWrapper">
-        <div class="text item" v-for="item in checkInfo.userAddresses"  :key="item.id">
+        <!--传递当前被点击项的item参数-->
+        <div class="text item" :class="{active:activeAddress.id === item.id}" @click="switchAddress(item)" v-for="item in checkInfo.userAddresses"  :key="item.id">
             <ul>
                 <li><span>收<i />货<i />人：</span>{{ item.receiver }} </li>
                 <li><span>联系方式：</span>{{ item.contact }}</li>
@@ -132,8 +150,8 @@ const showDialog = ref(false)
         </div>
             <template #footer>
                 <span class="dialog-footer">
-                    <el-button>取消</el-button>
-                    <el-button type="primary">确定</el-button>
+                    <el-button @click="cancle">取消</el-button>
+                    <el-button type="primary" @click="confirm">确定</el-button>
                 </span>
             </template>
     </el-dialog>
