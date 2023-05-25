@@ -1,4 +1,4 @@
-//封装接口函数
+//封装首页相关的接口函数
 
 import httpInstance from '@/utils/http'
 

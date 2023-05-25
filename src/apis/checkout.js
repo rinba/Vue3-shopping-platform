@@ -1,4 +1,4 @@
-//封装订单页相关的接口
+//封装订单页相关的接口函数
 
 import httpInstance from "@/utils/http"
 

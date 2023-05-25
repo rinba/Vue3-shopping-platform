@@ -1,4 +1,4 @@
-//封装购物车相关接口
+//封装购物车相关接口函数
 
 import httpInstance from "@/utils/http"
 //加入购物车
