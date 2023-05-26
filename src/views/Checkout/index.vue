@@ -34,7 +34,7 @@ const switchAddress = (item)=>{  //接收参数
 const confirm = ()=>{
     curAddress.value = activeAddress.value //被激活项替换默认项
     showDialog.value = false //确认后关闭弹框
-    activeAddress = {} //再次点击切换地址，被激活的是上一次选择的那一项
+    activeAddress.value = {} //再次点击切换地址，被激活的是上一次选择的那一项
 }
 //弹框中的取消按钮
 const cancle = ()=>{
