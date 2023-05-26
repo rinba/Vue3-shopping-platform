@@ -27,11 +27,18 @@ onMounted(() => {
   getOrderList()
 })
 
+//tab切换
+const tabChange = (type)=>{
+  //console.log(type) //验证控制台输出被点击项（被激活状态）的下标值
+  params.value.orderState = type //修改当前的状态
+  getOrderList() //重新发送请求，获取当前状态下的订单列表
+}
+
 </script>
 
 <template>
   <div class="order-container">
-    <el-tabs>
+    <el-tabs @tab-change="tabChange">
       <!-- tab切换 -->
       <el-tab-pane v-for="item in tabTypes" :key="item.name" :label="item.label" />
 
