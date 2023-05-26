@@ -14,6 +14,7 @@ const tabTypes = [
 ]
 // 获取订单列表
 const orderList = ref([])
+const total = ref(0) //页面总数
 const params = ref({
   orderState:0,
   page:1,
@@ -22,6 +23,7 @@ const params = ref({
 const getOrderList = async ()=>{
   const res = await getUserOrder(params.value)  //传递参数
   orderList.value = res.result.items
+  total.value = res.result.counts //获取页面总数
 }
 onMounted(() => {
   getOrderList()
@@ -32,6 +34,13 @@ const tabChange = (type)=>{
   //console.log(type) //验证控制台输出被点击项（被激活状态）的下标值
   params.value.orderState = type //修改当前的状态
   getOrderList() //重新发送请求，获取当前状态下的订单列表
+}
+
+//页数切换
+const pageChange = (page)=>{
+  console.log(page) //验证控制台输出被点击项的页数
+  params.value.page = page //修改当前的页数
+  getOrderList() //重新发送请求，获取当前页数下的订单列表
 }
 
 </script>
@@ -116,7 +125,7 @@ const tabChange = (type)=>{
           </div>
           <!-- 分页 -->
           <div class="pagination-container">
-            <el-pagination background layout="prev, pager, next" />
+            <el-pagination :total="total" @current-change="pageChange" :page-size="params.pageSize" background layout="prev, pager, next" />
           </div>
         </div>
       </div>
