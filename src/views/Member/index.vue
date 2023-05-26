@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="article">
-      <!-- 三级路由的挂载点 -->
-      <!-- <RouterView /> -->
+      <!-- 三级路由出口区域 -->
+      <RouterView />
     </div>
   </div>
 </template>
