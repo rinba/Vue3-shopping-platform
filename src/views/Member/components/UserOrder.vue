@@ -1,4 +1,7 @@
 <script setup>
+import { getUserOrder } from '@/apis/order'
+import { ref,onMounted } from 'vue'
+
 // tab列表
 const tabTypes = [
   { name: "all", label: "全部订单" },
@@ -9,8 +12,20 @@ const tabTypes = [
   { name: "complete", label: "已完成" },
   { name: "cancel", label: "已取消" }
 ]
-// 订单列表
-const orderList = []
+// 获取订单列表
+const orderList = ref([])
+const params = ref({
+  orderState:0,
+  page:1,
+  pageSize:2
+}) 
+const getOrderList = async ()=>{
+  const res = await getUserOrder(params.value)  //传递参数
+  orderList.value = res.result.items
+}
+onMounted(() => {
+  getOrderList()
+})
 
 </script>
 

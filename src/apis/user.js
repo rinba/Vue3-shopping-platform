@@ -2,6 +2,7 @@
 
 import httpInstance from "@/utils/http";
 
+//登录页的接口
 export const loginAPI = ({account, password})=>{
     return httpInstance({
         url:'/login',
@@ -13,11 +14,14 @@ export const loginAPI = ({account, password})=>{
     })
 }
 
+//《会员中心 -> 个人中心 -> 猜你喜欢》的接口
 export const getLikeListAPI = ({ limit = 4 }) => {
-    return request({
-      url:'/goods/relevant',
-      params: {
-        limit 
-      }
-    })
-  }
+  return request({
+    url:'/goods/relevant',
+    params: {
+      limit 
+    }
+  })
+}
+
+
