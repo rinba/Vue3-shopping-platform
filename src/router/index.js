@@ -1,11 +1,10 @@
-//创建整个项目的路由器
+//路由器
 
 //createRouter创建路由实例
 //createWebHistory创建history模式路由
-// 登录页、首页、Home页、分类页
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
+import Login from '@/views/Login/index.vue'        
 import Home from '@/views/Home/index.vue'
 import Category from '@/views/Category/index.vue'
 import SubCategory from '@/views/SubCategory/index.vue'
@@ -23,53 +22,54 @@ const router = createRouter({
   routes: [
     {
       path:'/',
-      component:Layout,
+      component:Layout,  //首页
       children:[
         {
-          path:'', //默认二级路由，将path配置为空
-          component:Home
+          //默认二级路由，将path配置为空
+          path:'', 
+          component:Home  //Home页
         },
         {
-          path:'category/:id',   //写子路由时路径前面没有/ 
-          component:Category
+          //子路由path前面没有/，使用小写字母
+          path:'category/:id',   
+          component:Category  //一级分类
 
         },
         {
           path:'category/sub/:id',
-          component:SubCategory
+          component:SubCategory  //二级分类
         },
         {
           path:'detail/:id',
-          component:Detail
+          component:Detail  //详情页
         },
         {
-          path:'cartlist',  //小写
-          component:CartList
-        
+          path:'cartlist',  
+          component:CartList  //购物车
         },
         {
           path:'checkout',
-          component:Checkout  
+          component:Checkout  //订单页
         },
         {
           path:'pay',
-          component:Pay  
+          component:Pay  //支付页
         },
         {
           path:'payback',
-          component:PayBack
+          component:PayBack  //支付结果页
         },
         {
           path:'member',
-          component:Member,
+          component:Member,  //会员中心页
           children:[
             {
               path:'',
-              component:UserInfo
+              component:UserInfo  //个人中心
             },
             {
               path:'order',
-              component:UserOrder
+              component:UserOrder  //我的订单
             }
           ]
         }
@@ -77,7 +77,7 @@ const router = createRouter({
     },
     {
       path:'/login',
-      component:Login
+      component:Login  //登录页
     }
   ],
   //路由滚动优化，自动滚动到页面顶部
