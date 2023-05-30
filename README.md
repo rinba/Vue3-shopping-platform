@@ -1,5 +1,5 @@
 ## 技术栈：
-** create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios **<br/><br/>
+create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 
 ## 一级路由：
 
