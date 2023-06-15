@@ -59,7 +59,7 @@ create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 
 ### 个人中心页
 
-![image-20230528205148437](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/c2ec6b56-0447-44fb-a58f-2f64c376a866)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/f1beca9e-9ba5-4390-82b8-9444c932078f)<br/><br/>
 
 ## 三级路由：
 
