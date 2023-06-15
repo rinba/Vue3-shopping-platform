@@ -4,7 +4,10 @@ create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 ## 一级路由：
 
 ### 首页
+**未登录**<br/><br/>
 ![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/9afe5572-34b2-450f-9999-b3ebbc8cf06c)<br/><br/>
+**已登录**<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/9ebe8543-837b-4616-bebf-93adf87e75f6)<br/><br/>
 
 ### 登录页
 ![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/118be22d-8196-4d2b-a540-fbe6d55707ce)<br/><br/>
@@ -54,16 +57,16 @@ create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 ![image-20230528205003391](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/ce33b335-d1f1-47a1-b1db-c82b37891c34)<br/><br/>
 
 
-### 会员中心页
+### 个人中心页
 
 ![image-20230528205148437](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/c2ec6b56-0447-44fb-a58f-2f64c376a866)<br/><br/>
 
 ## 三级路由：
 
-### 个人中心
+### 我的账户
 
-![image-20230528205251936](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/f504f078-0cac-4270-a06b-f43c5c3f467c)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/f87b576b-0fbf-48a6-81af-c772a84fea1a)<br/><br/>
 
-### 我的订单
+### 历史订单
 
-![image-20230528205305317](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/e0f2ad55-f2c3-4a9b-8190-db4b31a2bf25)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/83b1dea4-db11-4f49-89e7-569a89838abf)<br/><br/>
