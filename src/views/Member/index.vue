@@ -4,13 +4,11 @@
   <div class="container">
     <div class="xtx-member-aside">
       <div class="user-manage">
-        <h4>我的账户</h4>
         <div class="links">
-          <RouterLink to="/member">个人中心</RouterLink>
+          <RouterLink to="/member">我的账户</RouterLink>
         </div>
-        <h4>交易管理</h4>
         <div class="links">
-          <RouterLink to="/member/order">我的订单</RouterLink>
+          <RouterLink to="/member/order">历史订单</RouterLink>
         </div>
       </div>
     </div>
