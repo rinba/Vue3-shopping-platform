@@ -4,9 +4,9 @@ create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 ## 一级路由：
 
 ### 首页
-**未登录**<br/><br/>
+**（未登录）**<br/>
 ![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/9afe5572-34b2-450f-9999-b3ebbc8cf06c)<br/><br/>
-**已登录**<br/><br/>
+**（已登录）**<br/>
 ![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/9ebe8543-837b-4616-bebf-93adf87e75f6)<br/><br/>
 
 ### 登录页
