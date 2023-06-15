@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import {ref,watch} from 'vue'
 import { useMouseInElement } from '@vueuse/core';
 
 //props适配图片列表
@@ -61,7 +61,7 @@ watch([elementX, elementY,isOutside], () => {
 </script>
 
 <template>
-    {{ elementX }},{{ elementY }},{{ isOutside }}
+    <!--{{ elementX }},{{ elementY }},{{ isOutside }}-->
     <div class="goods-image">
         <!-- 左侧大图-->
         <div class="middle" ref="target">

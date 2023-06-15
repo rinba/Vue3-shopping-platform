@@ -19,7 +19,7 @@ export const getDetail = (id)=>{
  * @param {Number} limit - 获取个数
  */
 export const getHotGoodsAPI = ({ id, type, limit = 3 }) => {
-    return request({
+    return httpInstance({
         url:'/goods/hot',
         params:{
             id, 

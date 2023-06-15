@@ -5,10 +5,11 @@
   <!--一级路由出口组件（呈现位置）-->
   <RouterView/>
 
-  <!--测试.scss文件自动导入-->
+  <!--测试.scss文件自动导入
   <div class="test">
     test scss
   </div>
+  -->
 </template>
 
 <style scoped lang="scss">

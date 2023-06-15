@@ -16,14 +16,14 @@ onMounted(()=> getCategoryData())
 //获取基础列表数据渲染
 const goodList = ref([]) //商品列表
 const reqData = ref({  //封装接口函数时的基础参数data（对象）
-    categoryId: 1005000 ,
+    categoryId: route.params.id,
     page: 1,
     pageSize: 20,
     sortField: 'publishTime'
 })
 const getGoodList = async ()=>{
     const res = await getSubCategoryAPI(reqData.value)
-    console.log(res)
+    //console.log(res)
     goodList.value = res.result.items
 }
 onMounted(()=>{
@@ -73,7 +73,7 @@ const load = async ()=>{
             </el-tabs>
             <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
                 <!-- 商品列表-->
-                <GoodsItem v-for="goods in goodList" :goods="goods" key="goods.id"/>
+                <GoodsItem v-for="goods in goodList" :goods="goods" :key="goods.id"/>
             </div>
         </div>
     </div>

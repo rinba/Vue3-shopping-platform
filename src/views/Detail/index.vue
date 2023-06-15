@@ -13,21 +13,19 @@ const getGoods = async ()=>{
     const res = await getDetail(route.params.id)
     goods.value = res.result
 }
-onMounted(()=>{
-    getGoods()
-})
+onMounted(()=>getGoods())
 
 //sku规格被操作时
 let skuObj = {}
 const skuChange = (sku) =>{
-  console.log(sku) //输出结果是一个对象
+  //console.log(sku) //输出结果是一个对象
   skuObj = sku
 }
 
 //count
 const count = ref(1) //初始值为1
 const countChange = (count)=>{
-  console.log(count)
+  //console.log(count)
 }
 
 //添加购物车（根据是否获取到 sku对象中的skuId来判断用户是否选择规格）

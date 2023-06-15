@@ -16,7 +16,7 @@ export const loginAPI = ({account, password})=>{
 
 //《会员中心 -> 个人中心 -> 猜你喜欢》的接口
 export const getLikeListAPI = ({ limit = 4 }) => {
-  return request({
+  return httpInstance({
     url:'/goods/relevant',
     params: {
       limit 
