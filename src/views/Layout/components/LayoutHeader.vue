@@ -1,4 +1,5 @@
 <script setup>
+//交付该响应式接口数据
 import { useCategoryStore } from '@/stores/category'
 const categoryStore = useCategoryStore()
 import HeaderCart from './HeaderCart.vue'

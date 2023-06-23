@@ -1,10 +1,9 @@
 <script setup>
-//使用VueUse
+//使用VueUse，计算滚轮滚动距离
 import {useScroll} from '@vueuse/core'
-import { useCategoryStore } from '@/stores/category'
 const {y} = useScroll(window)
-
-//使用pinia中的数据
+//交付该响应式接口数据
+import { useCategoryStore } from '@/stores/category'
 const categoryStore = useCategoryStore()
 </script>
 

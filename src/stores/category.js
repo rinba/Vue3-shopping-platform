@@ -1,4 +1,4 @@
-//使用Pinia实现统一状态管理（接口无Body参数）
+//使用Pinia管理全部分类相关的数据
 
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
