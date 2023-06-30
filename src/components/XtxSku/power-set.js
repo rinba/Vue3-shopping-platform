@@ -1,3 +1,4 @@
+//幂集算法
 
 export default function bwPowerSet (originalSet) {
   const subSets = []

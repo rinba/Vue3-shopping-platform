@@ -14,6 +14,7 @@
     </dl>
   </div>
 </template>
+
 <script>
 import { watchEffect } from 'vue'
 import getPowerSet from './power-set'
@@ -128,7 +129,7 @@ export default {
         // 从路径字典中得到skuId
         const skuId = pathMap[selectedArr.join(spliter)][0]
         const sku = props.goods.skus.find(sku => sku.id === skuId)
-        // 传递数据给父组件
+        // 传递数据给父组件。如果是有效SKU，是完整对象；否则是空对象。
         emit('change', {
           skuId: sku.id,
           price: sku.price,
