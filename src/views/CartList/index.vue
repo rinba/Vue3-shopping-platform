@@ -4,16 +4,15 @@ const cartStore = useCartStore()
 
 //单选功能
 const singleCheck = (i,selected)=>{
-    //console.log(i,selected) //得到选中对象i(含skuId)和选中状态
-    cartStore.singleCheck(i.skuId,selected)  //传参
+  //console.log(i,selected) //得到选中对象i(含skuId)和选中状态
+  cartStore.singleCheck(i.skuId,selected)  //传参
 }
 
 //全选功能
 //此时不需要指定某一个选中对象，而是操作全部对象，所以不用skuId
 const allCheck = (selected)=>{
-  allCheck(selected)  //传参
+  cartStore.allCheck(selected)  //传参
 }
-
 
 </script>
 
@@ -25,6 +24,7 @@ const allCheck = (selected)=>{
           <thead>
             <tr>
               <th width="120">
+                <!--全选框-->
                 <el-checkbox :model-value="cartStore.isAll" @change="allCheck"/>
               </th>
               <th width="400">商品信息</th>

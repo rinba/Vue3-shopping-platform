@@ -2,7 +2,7 @@
 //使用VueUse，计算滚轮滚动距离
 import {useScroll} from '@vueuse/core'
 const {y} = useScroll(window)
-//交付该响应式接口数据
+//交付action获取的响应式接口数据
 import { useCategoryStore } from '@/stores/category'
 const categoryStore = useCategoryStore()
 </script>

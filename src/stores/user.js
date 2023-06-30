@@ -14,9 +14,9 @@ export const useUserStore = defineStore('user',()=>{
     //2.定义获取接口数据的action函数
     //登录
     const getUserInfo = async ({account,password})=>{
-       const res = await loginAPI({account,password})
-       userInfo.value = res.result
-       //登录时合并购物车
+        const res = await loginAPI({account,password})
+        userInfo.value = res.result
+        //登录时合并购物车。这里是双异步任务
         await mergeCartAPI(cartStore.cartList.map(item =>{
             return{
                 skuId:item.skuId,
@@ -24,15 +24,15 @@ export const useUserStore = defineStore('user',()=>{
                 count:item.count
             }
         }))
-        //获取最新购物车列表，覆盖本地购物车列表
+        //获取最新购物车列表
         cartStore.updateNewList()
     }
-    //退出登录时清除用户信息
+    //退出登录时，清除用户信息及清空购物车
     const clearUserInfo = ()=>{
         userInfo.value = {}
-        //清除购物车
         cartStore.clearCart()
     }
+
     //3.以对象的形式把state和action  return
     return{
         userInfo,

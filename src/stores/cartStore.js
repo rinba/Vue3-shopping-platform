@@ -1,4 +1,4 @@
-//使用Pinia封装购物车模块
+//使用Pinia管理购物车相关的数据
 
 import { defineStore } from "pinia"
 import { computed,ref } from "vue"
@@ -7,13 +7,12 @@ import { insertCartAPI,findNewCartListAPI,delCartAPI } from "@/apis/cart"
 
 export const useCartStore = defineStore('cart',()=>{
     const userStore = useUserStore()
-    //判断是否登录，依据接口的数据中有没有token。 这里没必要写computed
+    //判断是否登录，依据接口的数据中有没有token。 computed中只写一个数据返回布尔值
     const isLogin = computed(()=> userStore.userInfo.token)
 
     //1.定义state
     const cartList = ref([])
-    
-    //获取最新购物车列表action （简单封装一个方法）
+    //获取最新购物车列表action （简单封装一个全局方法）
     const updateNewList = async ()=>{
         const res =await findNewCartListAPI()
         //用接口购物车列表覆盖本地购物车列表
@@ -24,10 +23,10 @@ export const useCartStore = defineStore('cart',()=>{
     //2.1.添加购物车
     const addCart =async (goods)=>{
         const { skuId,count } = goods
-        if(isLogin.value){  //已经登录
+        if(isLogin.value){  //已经登录，已经合并过本地购物车和接口购物车
             //--- 接口购物车 ---
-            await insertCartAPI({skuId,count})
-            updateNewList()
+            await insertCartAPI({skuId,count}) //将本地购物车新增的列表加入至接口购物车
+            updateNewList() //获取最新的购物车列表
         }else{
             //--- 本地购物车 ---
             //之前添加过，count+1；没有添加过，直接push添加
@@ -71,7 +70,7 @@ export const useCartStore = defineStore('cart',()=>{
         cartList.value.forEach(item => item.selected = selected)
     }
 
-    //2.5清除购物车
+    //2.5清空购物车
     const clearCart = ()=>{
         cartList.value = []  //赋值空数组等效于清除
     }
@@ -85,14 +84,14 @@ export const useCartStore = defineStore('cart',()=>{
     const allPrice = computed(()=>cartList.value.reduce((a,c)=> a + c.count * c.price,0))
 
     //本地购物车->列表购物车
-    //是否全选   所有项的selected都为true，它才为true。使用数组的 every()
+    //是否全选   所有项的selected都为true，它才为true。使用数组的 every ()
     const isAll = computed(()=>cartList.value.every(item => item.selected))
     //已选择的商品数量   先过滤filter()，再累加reduce()，链式调用
     const selectedCount = computed(()=>cartList.value.filter(item => item.selected).reduce((a,c)=> a + c.count,0))
     //已选择的商品总价格   
     const selectedPrice = computed(()=>cartList.value.filter(item => item.selected).reduce((a,c)=> a + c.count * c.price,0))
 
-
+    //3.以对象的形式把state和action  return
     return{
         cartList,
         allCount,
