@@ -1,7 +1,6 @@
-//《会员中心 -> 我的订单 ->基础订单列表实现》的接口
+//《个人中心->历史订单->订单列表》的接口
 
 import httpInstance from "@/utils/http"
-
 /*
 params: {
     orderState:0,   tab切换时的状态

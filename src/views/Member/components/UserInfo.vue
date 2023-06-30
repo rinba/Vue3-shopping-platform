@@ -7,7 +7,7 @@ const userStore = useUserStore()
 
 const likeList = ref([])
 const getLikeList = async ()=>{
-    const res = await getLikeListAPI({limit:4})
+    const res = await getLikeListAPI({limit:4}) //限制猜你喜欢只展示四个图片
     likeList.value = res.result
 }
 onMounted(() => {

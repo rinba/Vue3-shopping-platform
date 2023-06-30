@@ -15,7 +15,7 @@ const tabTypes = [
 // 获取订单列表
 const orderList = ref([])
 const total = ref(0) //页面总数
-const params = ref({
+const params = ref({ //这里设置为响应式数据是为了后面的修改
   orderState:0,
   page:1,
   pageSize:2
@@ -32,13 +32,13 @@ onMounted(() => {
 //tab切换
 const tabChange = (type)=>{
   //console.log(type) //验证控制台输出被点击项（被激活状态）的下标值
-  params.value.orderState = type //修改当前的状态
+  params.value.orderState = type //将orderState修改为当前的状态
   getOrderList() //重新发送请求，获取当前状态下的订单列表
 }
 
 //页数切换
 const pageChange = (page)=>{
-  console.log(page) //验证控制台输出被点击项的页数
+  //console.log(page) //验证控制台输出被点击项的页数
   params.value.page = page //修改当前的页数
   getOrderList() //重新发送请求，获取当前页数下的订单列表
 }
@@ -53,7 +53,7 @@ const fomartPayState = (payState) => {
     5: '已完成',
     6: '已取消'
   }
-  return stateMap[payState]
+  return stateMap[payState] //使用中括号的写法取对象中的属性
 }
 </script>
 
