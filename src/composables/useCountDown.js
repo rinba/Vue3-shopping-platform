@@ -9,7 +9,7 @@ export const useCountDown = ()=>{
     //格式化时间为  xx分xx秒
     const formatTime = computed(()=> dayjs.unix(time.value).format('mm分ss秒') )
     //2.开启倒计时的函数
-    const start = (currentTime) =>{ //参数是倒计时的初始值
+    const start = (currentTime) =>{ //参数是倒计时的初始值，接口中会给
         //开始倒计时的逻辑
         time.value = currentTime
         //核心逻辑：每隔1s减一（定时器）

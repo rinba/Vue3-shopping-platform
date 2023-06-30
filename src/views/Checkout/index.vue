@@ -21,15 +21,13 @@ onMounted(() => {
     getCheckInfo()   
 })
 
-//控制切换地址的弹框打开
+//控制切换地址的弹框是否打开
 const showDialog = ref(false)
-
 //记录当前弹框中被点击的那一项
 const activeAddress = ref({})
-const switchAddress = (item)=>{  //接收参数
+const switchAddress = (item)=>{  //接收click事件传过来的参数
     activeAddress.value = item
 }
-
 //弹框中的确认按钮
 const confirm = ()=>{
     curAddress.value = activeAddress.value //被激活项替换默认项
@@ -63,7 +61,7 @@ const createOrder = async () => {
       id: orderId
     }
   })
-  //更新购物车
+  //更新购物车。此时购物车归零
   cartStore.updateNewList()
 }
 
@@ -185,7 +183,6 @@ const createOrder = async () => {
                 </span>
             </template>
     </el-dialog>
-
   <!-- 添加地址 -->
 </template>
 
