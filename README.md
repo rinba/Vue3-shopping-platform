@@ -4,7 +4,7 @@ create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 **安装步骤：**
 ```
 git clone 项目地址       // 把项目下载到本地
-cd vue-manage-system    // 进入项目目录
+cd vue3-shopping-platform    // 进入项目目录
 npm install             // 安装项目依赖，等待安装完成之后，安装失败可用 cnpm 或 yarn
 npm run dev             // 运行项目
 
