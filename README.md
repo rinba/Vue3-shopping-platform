@@ -1,6 +1,9 @@
 ## 技术栈：
 create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 
+** 登录页账号：demo 密码：hm#qd@23!   **
+
+
 **安装步骤：**
 ```
 git clone 项目地址       // 把项目下载到本地
