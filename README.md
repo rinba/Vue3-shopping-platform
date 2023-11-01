@@ -1,7 +1,7 @@
 ## 技术栈：
 create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 
-** 登录页账号：demo 密码：hm#qd@23!   **
+登录页的账号：demo 密码：hm#qd@23!
 
 
 **安装步骤：**
