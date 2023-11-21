@@ -66,7 +66,7 @@ const doLogin = ()=>{
     <header class="login-header">
       <div class="container m-top-20">
         <h1 class="logo">
-          <RouterLink to="/">小兔鲜</RouterLink>
+          <RouterLink to="/">亚马孙电商购物平台</RouterLink>
         </h1>
         <RouterLink class="entry" to="/">
           进入网站首页
@@ -85,10 +85,10 @@ const doLogin = ()=>{
             <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px"
               status-icon>
               <el-form-item prop="account" label="账户">
-                <el-input v-model="form.account"/>
+                <el-input v-model="form.account" placeholder="demo"/>
               </el-form-item>
               <el-form-item prop="password" label="密码">
-                <el-input v-model="form.password"/>
+                <el-input v-model="form.password" placeholder="hm#qd@23!"/>
               </el-form-item>
               <el-form-item prop="agree" label-width="22px">
                 <el-checkbox v-model="form.agree" size="large">
@@ -113,7 +113,7 @@ const doLogin = ()=>{
           <a href="javascript:;">搜索推荐</a>
           <a href="javascript:;">友情链接</a>
         </p>
-        <p>CopyRight &copy; 小兔鲜儿</p>
+        <p>CopyRight &copy; 亚马孙电商购物平台</p>
       </div>
     </footer>
   </div>
