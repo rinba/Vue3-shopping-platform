@@ -1,9 +1,6 @@
 ## 技术栈：
 create-vue + Vite + Pinia + VueUse + ElementPlus + Vue-Router + SCSS + Axios
 
-登录页的账号：demo 密码：hm#qd@23!
-
-
 **安装步骤：**
 ```
 git clone 项目地址       // 把项目下载到本地
@@ -59,19 +56,19 @@ npm run build           // 执行构建命令，生成的dist文件夹放在服�
 ![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/07201e79-da5a-4325-a9b8-a0a1f68f98ba)<br/>
 ![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/fbd3ad52-5013-4760-ac33-43ef50eeae7c)<br/>
 验证：点击左侧单选框，控制台输出当前选中对象（含skuId）和选中状态。<br/><br/>
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/cb5b3953-5b36-4cfe-9648-b58cbc2cb6ed)<br/>
-<br/><br/><br/><br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/5c301533-04d7-4375-9257-c887d70de230)<br/>
+<br/><br/><br/>
 
 ## 一级路由：
 
 ### 首页
 **（未登录）**<br/>
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/9afe5572-34b2-450f-9999-b3ebbc8cf06c)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/462e6d5e-3878-4a2a-99b6-61d821866281)<br/><br/>
 **（已登录）**<br/>
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/9ebe8543-837b-4616-bebf-93adf87e75f6)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/d771d08f-78e7-431e-a0e5-9fe42039fabb)<br/><br/>
 
 ### 登录页
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/118be22d-8196-4d2b-a540-fbe6d55707ce)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/a258440f-4b0d-444c-8240-1d6116b1c994)<br/><br/>
 
 ## 二级路由：
 
@@ -81,11 +78,11 @@ npm run build           // 执行构建命令，生成的dist文件夹放在服�
 
 ### 一级分类
 
-![image-20230528203522091](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/7a40b8dd-5252-4468-99db-fabfd358a868)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/76658fe3-2d45-4677-9ef8-becc81b9fe82)<br/><br/>
 
 ### 二级分类
 
-![image-20230528203618086](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/b3db633c-f2b3-4c6d-b03c-5aabbc24a941)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/3a7c3d7f-1b23-407e-9314-7a024232acdf)<br/><br/>
 
 ### 详情页
 
@@ -115,19 +112,19 @@ npm run build           // 执行构建命令，生成的dist文件夹放在服�
 
 ![image-20230528204843527](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/b112507a-03d8-41bd-89cc-5dd0fd748adb)<br/><br/>
 
-![image-20230528205003391](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/ce33b335-d1f1-47a1-b1db-c82b37891c34)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/cf5abdf5-2de9-45a9-8ee2-8c21bb0d816f)<br/><br/>
 
 
 ### 个人中心页
 
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/f1beca9e-9ba5-4390-82b8-9444c932078f)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/20c3b163-f3af-4285-a7d5-cceac83fb89e)<br/><br/>
 
 ## 三级路由：
 
 ### 我的账户
 
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/f87b576b-0fbf-48a6-81af-c772a84fea1a)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/60fe706f-8fcc-4dea-afae-034dedd42c51)<br/><br/>
 
 ### 历史订单
 
-![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/83b1dea4-db11-4f49-89e7-569a89838abf)<br/><br/>
+![image](https://github.com/rinba/Vue3-shopping-platform/assets/106224527/54d5381e-d11c-4f29-bfc0-389d7b8acc72)<br/><br/>
